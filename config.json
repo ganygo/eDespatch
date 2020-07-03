@@ -1,0 +1,47 @@
+{
+	"release":{
+		"httpserver":{
+			"port" : 3000
+		},
+		"host":{
+			"url" : "http://localhost:3000"
+		},
+		"mongodb": {
+			"address":"mongodb://localhost:27017/etuliaportal",
+			"userAddress":"mongodb://localhost:27017/"
+		},
+		"connector_service":{
+			"port":33216
+		}
+	},
+	"development":{
+		"httpserver":{
+			"port" : 3002
+		},
+		"host":{
+			"url" : "http://localhost:3000"
+		},
+		"mongodb": {
+			"address":"mongodb://localhost:27017/etuliaportal",
+			"userAddress":"mongodb://localhost:27017/"
+		},
+		"connector_service":{
+			"port":33216
+		}
+	},
+	"test":{
+		"httpserver":{
+			"port" : 3001
+		},
+		"host":{
+			"url" : "http://localhost:3000"
+		},
+		"mongodb": {
+			"address":"mongodb://localhost:27017/etuliaportal",
+			"userAddress":"mongodb://localhost:27017/"
+		},
+		"connector_service":{
+			"port":33216
+		}
+	}
+}

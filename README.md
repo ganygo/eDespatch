@@ -1,2 +1,0 @@
-# eDespatch
-e-irsaliye servisi
