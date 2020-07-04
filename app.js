@@ -49,6 +49,9 @@ app.set('port',config.httpserver.port)
 module.exports=(cb)=>{
 	dbLoader((err)=>{
 		if(!err){
+			global.taskHelper=require('./bin/taskhelper')
+			global.eDespatch=require('./services/e-despatch/e-despatch')
+			eDespatch.start()
 			cb(null,app)
 
 		}else{

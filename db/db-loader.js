@@ -110,7 +110,7 @@ function init(callback){
 	    if(!err){
 	        return true
 	    }else{
-	        cb({success: false, error: {code: err.name, message: err.message}})
+	        cb(err.message)
 	        return false
 	    }
 	}
@@ -119,7 +119,7 @@ function init(callback){
 	    if(doc!=null){
 	        return true
 	    }else{
-	        cb({success: false, error: {code: 'RECORD_NOT_FOUND', message: 'Kayit bulunamadi'}})
+	    	cb({message:'Record was not found'})
 	        return false
 	    }
 	}

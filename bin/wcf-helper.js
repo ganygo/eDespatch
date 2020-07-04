@@ -174,7 +174,7 @@ ${this.queryParameter(query)}
 					            callback({code:errorCode,message:errorMessage})
 					        }else{
 					        	var body=jsObject['s:Envelope']['s:Body']
-					        	fs.writeFileSync(path.join(config.tmpDir,'resBody.json'),JSON.stringify(body,null,2),'utf8')
+					        	tempLog('resBody.json',JSON.stringify(jsObject,null,2))
 								callback(null,body)
 					        }
 	            		}else{

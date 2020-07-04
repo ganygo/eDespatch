@@ -12,14 +12,15 @@
 		},
 		"connector_service":{
 			"port":33216
-		}
+		},
+		"tmpDir":"/tmp"
 	},
 	"development":{
 		"httpserver":{
 			"port" : 3002
 		},
 		"host":{
-			"url" : "http://localhost:3000"
+			"url" : "http://localhost:3002"
 		},
 		"mongodb": {
 			"address":"mongodb://localhost:27017/etuliaportal",
@@ -27,21 +28,23 @@
 		},
 		"connector_service":{
 			"port":33216
-		}
+		},
+		"tmpDir":"C:\\arge\\tr216\\temp"
 	},
 	"test":{
 		"httpserver":{
 			"port" : 3001
 		},
 		"host":{
-			"url" : "http://localhost:3000"
+			"url" : "http://localhost:3001"
 		},
 		"mongodb": {
-			"address":"mongodb://localhost:27017/etuliaportal",
+			"address":"mongodb://localhost:27017/portal-test",
 			"userAddress":"mongodb://localhost:27017/"
 		},
 		"connector_service":{
-			"port":33216
-		}
+			"port":33218
+		},
+		"tmpDir":"/tmp"
 	}
 }
