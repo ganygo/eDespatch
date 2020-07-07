@@ -163,7 +163,7 @@ ${this.queryParameter(query)}
 	            			return e
 	            		}]
 	            	}
-	            	
+	            	tempLog('response.xml',response)
 	            	parseString(response,options,(err,jsObject)=>{
 	            		if(!err){
 	            			tempLog('response.json',JSON.stringify(jsObject,null,2))

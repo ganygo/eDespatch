@@ -1,13 +1,14 @@
-module.exports = (dbModel, req, res, callback)=>{
+module.exports = (dbModel, req, res, next, cb)=>{
 	if(req.params.param1==undefined)
-		throw Error('[/:param1] is required')
+		error.param1(req)
     switch(req.method){
         case 'GET':
         	dbModel.despatches.findOne({_id:req.params.param1},(err,doc)=>{
-        		if(dberr(err,callback))
-        			if(dbnull(doc,callback)){
-        				callback(null,doc.despatchErrors)
+        		if(dberr(err,next)){
+        			if(dbnull(doc,next)){
+        				cb(doc.despatchErrors)
         			}
+        		}
         	})
         break;
         // case 'POST':
@@ -20,7 +21,7 @@ module.exports = (dbModel, req, res, callback)=>{
         
         // break;
         default:
-        throw Error(`WRONG METHOD: ${req.method}`)
+        error.method(req, next)
         break;
     }
 

@@ -9,6 +9,7 @@ var logger = require('morgan')
 var favicon = require('serve-favicon')
 
 global.util = require('./bin/util')
+global.mail=require('./bin/mail')
 
 
 var indexRouter = require('./routes/index')
@@ -26,21 +27,7 @@ app.use(cookieParser())
 
 indexRouter(app)
 
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404))
-// })
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
-})
+testControllers(false)
 
 app.set('name',require('./package').name)
 app.set('version',require('./package').version)
@@ -58,5 +45,27 @@ module.exports=(cb)=>{
 			cb(err)
 		}
 
+	})
+}
+
+process.on('uncaughtException', function (err) {
+	errorLog('Caught exception: ', err)
+	
+	mail.sendErrorMail(`Err ${app.get('name')}`,err,(mailErr,info)=>{
+		if(mailErr)
+			console.log(`mailErr:`,mailErr)
+		console.log(`mail info:`,info)
+		process.exit(0)
+	})
+})
+
+/* [CONTROLLER TEST] */
+function testControllers(log){
+	moduleLoader(path.join(__dirname,'controllers'),'.controller.js',(log?'controllers testing':''),(err,holder)=>{
+		if(err)
+			throw err
+		else{
+			eventLog(`test controllers OK ${Object.keys(holder).length.toString().yellow}`)
+		}
 	})
 }

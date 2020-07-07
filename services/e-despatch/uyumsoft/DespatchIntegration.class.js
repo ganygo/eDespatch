@@ -1,7 +1,6 @@
 class DespatchIntegration {
 	constructor(url,username,password){
 		this.client=new WcfHelper(url,username,password,'IDespatchIntegration')
-		
 	}
 
     /* string[] despatchesIds */
@@ -343,7 +342,7 @@ ${xmlDespatchAdvice}
 	
 	return xmlDespatchInfo
     }
-    
+
 }
 
 class CustomerInfo {
